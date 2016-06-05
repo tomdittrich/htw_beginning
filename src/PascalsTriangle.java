@@ -1,6 +1,6 @@
 import Prog1Tools.IOTools; // http://www.grundkurs-java.de/software/Prog1Tools/Prog1Tools.zip
 
-public class PascalDreieck {
+public class PascalsTriangle {
 
 	public static void main(String[] args) {
 		int i;
