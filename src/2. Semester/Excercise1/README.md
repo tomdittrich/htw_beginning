@@ -1,2 +1,3 @@
-# htw_beginning
-Java exercises, first and second semester (2016)
+Vector Excercise (in german)
+Vektor.java class : basis for further methods
+VektorTest.java : Main Method for VektorClass Testing
