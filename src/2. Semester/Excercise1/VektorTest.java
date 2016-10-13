@@ -49,7 +49,7 @@ public class VektorTest {
         System.out.println("---------------");
 
         // Bildung von Skalar Produkt des 1. und 3. Vektors (gleiche Dimension)
-        System.out.println("\nDas Skalarprodukt von Vektor1 und 3 ist: " + v1.skalarProdukt(v3));
+        System.out.println("\nDas Skalarprodukt von Vektor 1 und 3 ist: " + v1.skalarProdukt(v3));
 
     }
 }
