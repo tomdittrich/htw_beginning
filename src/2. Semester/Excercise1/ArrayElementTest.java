@@ -5,8 +5,8 @@ import java.util.Arrays;
  * reine Testklasse fuer die Klasse ArrayElement
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.1
  * @date 13.10.16
+ * @version 1.0
  */
 public class ArrayElementTest {
 

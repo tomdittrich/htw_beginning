@@ -5,7 +5,7 @@
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @date 10.10.16
- * @version 0.9
+ * @version 1.0
  */
 public class Vektor {
 
@@ -20,12 +20,12 @@ public class Vektor {
     public Vektor() {
         dimension = 3;
         komponenten = new float[dimension];
-        System.out.printf("Keine Paramater angegeben. Zeilen-.Vektor mit %1d Dimensionen erzeugt und mit 0en gefüllt%n", dimension);
+        System.out.printf("Keine Paramater angegeben. Zeilen-Vektor mit %1d Dimensionen erzeugt und mit 0en gefüllt%n", dimension);
     }
 
     /**
      * Konstruktor
-     * Erzeugt ein n-dimensionalen .Vektor, gefüllt mit 0en
+     * Erzeugt ein n-dimensionalen Vektor, gefüllt mit 0en
      *
      * @param dimension Dimension des Vektors
      * @param istZeilenvektor Zeilenvektor? Sonst Spaltenvektor
@@ -38,7 +38,7 @@ public class Vektor {
 
     /**
      * Konstruktor
-     * Erzeugt einen n-dimensionalen .Vektor, gefüllt mit dem Übergabe-Array
+     * Erzeugt einen n-dimensionalen Vektor, gefüllt mit dem Übergabe-Array
      *
      * @param komponenten Array Übergabe
      * @param istZeilenvektor Zeilenvektor? Sonst Spaltenvektor
@@ -77,12 +77,13 @@ public class Vektor {
     }
 
     /**
-     * Setter Zahl im .Vektor
+     * Setter Zahl im Vektor
      *
-     * @param position Position im Array/.Vektor
+     * @param position Position im Array/Vektor
      * @param zahl zu füllende Zahl
      */
     public void setZahl(int position, float zahl) {
+        // prüft vorab die Position im Bereich des Arrays liegt
         if (position + 1 <= dimension) {
             komponenten[position] = zahl;
         } else {
@@ -91,12 +92,13 @@ public class Vektor {
     }
 
     /**
-     * Getter Zahl aus .Vektor
+     * Getter Zahl aus Vektor
      *
-     * @param position Position im Array/.Vektor
+     * @param position Position im Array/Vektor
      * @return (float) die Zahl der Position
      */
     public float getZahl(int position) {
+        // prüft vorab die Position im Bereich des Arrays liegt
         if (position + 1 <= dimension) {
             return komponenten[position];
         } else {
@@ -106,9 +108,9 @@ public class Vektor {
     }
 
     /**
-     * Getter .Vektor/Array
+     * Getter Vektor/Array
      *
-     * @return (Array) gibt .Vektor/Array zurück
+     * @return (Array) gibt Vektor/Array zurück
      */
     public float[] getKomponenten() {
         return komponenten;
@@ -128,9 +130,9 @@ public class Vektor {
     }
 
     /**
-     * Berechnet Skalarprodukt mit einem zusätzlichen .Vektor
+     * Berechnet Skalarprodukt mit einem zusätzlichen Vektor
      *
-     * @param bVektor zweiter zu übergebender .Vektor (.Vektor Objekt)
+     * @param bVektor zweiter zu übergebender Vektor (Vektor Objekt)
      * @return (float) das Skalar
      */
     public float skalarProdukt(Vektor bVektor) {
@@ -155,6 +157,7 @@ public class Vektor {
     public String toString() {
         String ausgabe = new String();
 
+        // wenn ein Zeilenvektor
         if (istZeilenvektor) {
             ausgabe += "( ";
             for (float elem : komponenten) {
@@ -164,6 +167,7 @@ public class Vektor {
             ausgabe += "Ist ein Zeilenvektor mit der Dimension " + dimension;
 
         } else {
+            // wenn ein Spaltenvektor
             for (float elem : komponenten) {
                 ausgabe += "( " + elem + " )\n";
             }

@@ -3,7 +3,7 @@
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @date 10.10.16
- * @version 0.9
+ * @version 1.0
  */
 public class VektorTest {
 
