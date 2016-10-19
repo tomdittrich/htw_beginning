@@ -122,7 +122,7 @@ public class Matrix {
         if (getZeilen() == ma.getZeilen() && getSpalten() == ma.getSpalten()) {
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[i].length; j++) {
-                    if (array[i][j]!=ma.array[i][j]){
+                    if (array[i][j] != ma.array[i][j]) {
                         return false;
                     }
                 }
@@ -134,6 +134,12 @@ public class Matrix {
         return true;
     }
 
+    /**
+     * Addiert zwei Matrizen
+     *
+     * @param ma zu addierendes Matrix-Objekt
+     * @return Ergebnis Matrix
+     */
     public Matrix add(Matrix ma) {
         double[][] ergebnis = new double[getZeilen()][getSpalten()];
 
@@ -146,10 +152,25 @@ public class Matrix {
         } else {
             throw new IllegalArgumentException("Matrizen Dimensionen nicht kompatibel");
         }
-    return new Matrix(ergebnis);
+        return new Matrix(ergebnis);
     }
 
+    /**
+     * Multipliziert die Matrix mit einem Skalar
+     *
+     * @param scalar Skalar Übergabe
+     * @return Ergebnix Matrix
+     */
+    public Matrix multiplyScalar(double scalar) {
+        double[][] ergebnis = new double[getZeilen()][getSpalten()];
 
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                ergebnis[i][j] = array[i][j] * scalar;
+            }
+        }
+        return new Matrix(ergebnis);
+    }
 
 
 }
