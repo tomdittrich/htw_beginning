@@ -3,8 +3,8 @@
  * Basis für weitere Methoden.
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.5
- * @date 26.10.16
+ * @version 0.9
+ * @date 10/27/16
  */
 public class BitFlags {
 
@@ -85,6 +85,6 @@ public class BitFlags {
         int hilf = 1;
 
         hilf = hilf << index;
-        return ((this.status & hilf) == hilf)?true:false;
+        return ((this.status & hilf) == hilf) ? true : false;
     }
 }
