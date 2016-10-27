@@ -1,12 +1,13 @@
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
  * JUnit Testklasse fuer die Klasse BitFlags
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.9
+ * @version 1.0
  * @date 10/27/16
  */
 public class BitFlagsTest {

@@ -3,7 +3,7 @@
  * Basis für weitere Methoden.
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.9
+ * @version 1.0
  * @date 10/27/16
  */
 public class BitFlags {
