@@ -4,7 +4,7 @@
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.0
- * @date 10/27/16
+ * @date 30/10/16
  */
 public class BitFlags {
 
@@ -44,10 +44,14 @@ public class BitFlags {
      * @param index Indexposition
      */
     public void switchOn(int index) {
-        int hilf = 1;
+        if(index >= 0 && index <= 31){
+            int hilf = 1;
 
-        hilf = hilf << index;
-        this.status = this.status | hilf;
+            hilf = hilf << index;
+            this.status = this.status | hilf;
+        } else {
+            throw new IllegalArgumentException("Nur Indexwerte von 0 bis 31 sind zulässig");
+        }
     }
 
     /**
@@ -56,10 +60,14 @@ public class BitFlags {
      * @param index Indexposition
      */
     public void switchOff(int index) {
-        int hilf = 1;
+        if(index >= 0 && index <= 31){
+            int hilf = 1;
 
-        hilf = ~(hilf << index);
-        this.status = this.status & hilf;
+            hilf = ~(hilf << index);
+            this.status = this.status & hilf;
+        } else {
+            throw new IllegalArgumentException("Nur Indexwerte von 0 bis 31 sind zulässig");
+        }
     }
 
     /**
@@ -68,11 +76,14 @@ public class BitFlags {
      * @param index Indexposition
      */
     public void swap(int index) {
-        int hilf = 1;
+        if(index >= 0 && index <= 31){
+            int hilf = 1;
 
-        hilf = hilf << index;
-        this.status = this.status ^ hilf;
-
+            hilf = hilf << index;
+            this.status = this.status ^ hilf;
+        } else {
+            throw new IllegalArgumentException("Nur Indexwerte von 0 bis 31 sind zulässig");
+        }
     }
 
     /**
@@ -82,9 +93,13 @@ public class BitFlags {
      * @return gesetzt? True
      */
     public boolean isSet(int index) {
-        int hilf = 1;
+        if(index >= 0 && index <= 31) {
+            int hilf = 1;
 
-        hilf = hilf << index;
-        return ((this.status & hilf) == hilf) ? true : false;
+            hilf = hilf << index;
+            return ((this.status & hilf) == hilf) ? true : false;
+        } else {
+            throw new IllegalArgumentException("Nur Indexwerte von 0 bis 31 sind zulässig");
+        }
     }
 }

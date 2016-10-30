@@ -3,7 +3,7 @@
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.0
- * @date 10/27/16
+ * @date 30/10/16
  */
 public class BinaryTest {
 
