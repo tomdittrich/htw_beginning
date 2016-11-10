@@ -44,6 +44,13 @@ public class RechnerTest {
                 new String[]{"12.55", "div", "6.21"},
                 new String[]{"0", "div", "6"},
                 new String[]{"5", "div", "0"},
+
+                //Fehler
+                new String[]{"eins", "add", "null"},
+                new String[]{"eins", "1", "null"},
+                new String[]{"2", "add", "2", "4"},
+                new String[]{"2", "4", "2"},
+
         };
 
         for (int i = 0; i < test.length; i++) {

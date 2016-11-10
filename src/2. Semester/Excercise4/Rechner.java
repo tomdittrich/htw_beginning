@@ -16,41 +16,38 @@ public class Rechner {
     /**
      * gibt die Rechnung und das Ergebnis aus
      *
-     * @param werte zu übergebende String-args Array
+     * @param werte zu übergebendes String-args Array
      */
-    private static void output (String[] werte){
-        // prüft ob die Anzahl der Argumente übereinstimmt
-        if(werte.length!=3){
-            throw new IllegalArgumentException("Ungültige Menge an Argumenten.");
-        }
+    private static void output(String[] werte) {
+        if (pruef(werte)) {
+            double a = Double.parseDouble(werte[0]);
+            double b = Double.parseDouble(werte[2]);
 
-        double a = Double.parseDouble(werte[0]);
-        double b = Double.parseDouble(werte[2]);
-
-        String op = werte[1];
+            String op = werte[1];
 
 
-        // Prüft, welche Rechenoperation statt findet.
-        // Die Rechenop. sind mit Absicht ausgelagert: sollte das Programm ggf. weiter geschrieben
-        // werden, könnenten die Methoden noch nützlich sein
-        if (op.equals("add")) {
-            System.out.println(a + " " + op + " " + b + " ist " + add(a, b));
+            // Prüft, welche Rechenoperation statt findet.
+            // Die Rechenop. sind mit Absicht ausgelagert: sollte das Programm ggf. weiter geschrieben
+            // werden, könnenten die Methoden noch nützlich sein
+            if (op.equals("add")) {
+                System.out.println(a + " " + op + " " + b + " ist " + add(a, b));
 
-        } else if (op.equals("sub")) {
-            System.out.println(a + " " + op + " " + b + " ist " + sub(a, b));
+            } else if (op.equals("sub")) {
+                System.out.println(a + " " + op + " " + b + " ist " + sub(a, b));
 
-        } else if (op.equals("mul")) {
-            System.out.println(a + " " + op + " " + b + " ist " + mul(a, b));
+            } else if (op.equals("mul")) {
+                System.out.println(a + " " + op + " " + b + " ist " + mul(a, b));
 
-        } else if (op.equals("div")) {
-            if(b!=0){
-                System.out.println(a + " " + op + " " + b + " ist " + div(a, b));
+            } else if (op.equals("div")) {
+                if (b != 0) {
+                    System.out.println(a + " " + op + " " + b + " ist " + div(a, b));
+                } else {
+                    System.out.println("Division durch 0 nicht möglich.");
+                }
+
             } else {
-                System.out.println("Division durch 0 nicht möglich.");
+                System.out.println("Keine gültige Operation angegeben.");
             }
-
-        } else {
-            throw new IllegalArgumentException("Keine gültige Operation angegeben.");
         }
     }
 
@@ -62,7 +59,7 @@ public class Rechner {
      * @return auf zwei stellen gerundetes Ergebnis
      */
     private static double add(double a, double b) {
-        return (Math.round( (a+b) * 100 ) / 100.0);
+        return (Math.round((a + b) * 100) / 100.0);
     }
 
     /**
@@ -73,7 +70,7 @@ public class Rechner {
      * @return auf zwei stellen gerundetes Ergebnis
      */
     private static double sub(double a, double b) {
-        return (Math.round( (a-b) * 100 ) / 100.0);
+        return (Math.round((a - b) * 100) / 100.0);
     }
 
     /**
@@ -84,7 +81,7 @@ public class Rechner {
      * @return auf zwei stellen gerundetes Ergebnis
      */
     private static double mul(double a, double b) {
-        return (Math.round( (a*b) * 100 ) / 100.0);
+        return (Math.round((a * b) * 100) / 100.0);
     }
 
     /**
@@ -95,6 +92,35 @@ public class Rechner {
      * @return auf zwei stellen gerundetes Ergebnis
      */
     private static double div(double a, double b) {
-        return (Math.round( (a/b) * 100 ) / 100.0);
+        return (Math.round((a / b) * 100) / 100.0);
+    }
+
+    /**
+     * Prüft ob die Menge und richtigen Datentypen der Argumente
+     *
+     * @param werte zu übergebende String-args Array
+     * @return alles richtig? true
+     */
+    private static boolean pruef(String werte[]) {
+        boolean ergebnis = true;
+
+        // prüft ob die Menge der Argumente stimmt
+        if (werte.length != 3) {
+            System.out.println("Ungültige Menge an Argumenten.");
+            ergebnis = false;
+        } else {
+            // prüft ob gültige Werte eingegeben wurden
+            try {
+                double a = Double.parseDouble(werte[0]);
+                double b = Double.parseDouble(werte[2]);
+                String op = werte[1];
+
+            } catch (NumberFormatException exception) {
+                System.out.println("Keine gültigen Werte eingegeben.");
+                ergebnis = false;
+            }
+        }
+
+        return ergebnis;
     }
 }
