@@ -2,7 +2,7 @@
  * Description
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.7
+ * @version 0.8
  * @date 11/11/16
  */
 public class Azubi extends Mitarbeiter {
@@ -39,7 +39,7 @@ public class Azubi extends Mitarbeiter {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String ausgabe = new String();
 
         ausgabe += super.toString();

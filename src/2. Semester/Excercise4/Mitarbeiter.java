@@ -2,7 +2,7 @@
  * Description
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.7
+ * @version 0.8
  * @date 11/11/16
  */
 public class Mitarbeiter {
@@ -11,16 +11,16 @@ public class Mitarbeiter {
     private String name;
     private double gehalt;
 
-    public Mitarbeiter(){
+    public Mitarbeiter() {
         vorname = "Hans";
         name = "Mustermann";
         gehalt = 1500;
     }
 
-    public Mitarbeiter(String vorname, String name, double gehalt){
+    public Mitarbeiter(String vorname, String name, double gehalt) {
         this.vorname = vorname;
         this.name = name;
-        this.gehalt = gehalt;
+        setGehalt(gehalt);
     }
 
     public String getVorname() {
@@ -45,24 +45,32 @@ public class Mitarbeiter {
     }
 
     public void setGehalt(double gehalt) {
-        if(gehalt<=0){
-            System.out.println("Wert darf nicht 0 oder negativ sein");
+        if (gehalt < 0) {
+            System.out.println("Wert darf nicht negativ sein und wurde in eine positive Zahl gewandelt.");
+            this.gehalt = Math.abs(gehalt);
         } else {
             this.gehalt = gehalt;
         }
 
     }
 
-    public void erhoeheGehalt(double a){
-        if(a<=0){
-            System.out.println("Wert darf nicht 0 oder negativ sein");
+    public void erhoeheGehalt(double a) {
+        // Wert 0 ?
+        if (a == 0) {
+            System.out.println("Wert darf nicht 0 sein.");
         } else {
-            gehalt += a;
+            // Wert negativ? Absolut Betrag
+            if (a < 0) {
+                System.out.println("Wert darf nicht negativ sein und wurde in eine positive Zahl gewandelt.");
+                gehalt += Math.abs(a);
+            } else {
+                gehalt += a;
+            }
         }
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String ausgabe = new String();
 
         ausgabe += "Der Vorname lautet: " + vorname + "\n";
