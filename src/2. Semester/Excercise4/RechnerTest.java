@@ -2,8 +2,8 @@
  * Reine Testklasse für die Klasse Rechner
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.7
- * @date 06/11/16
+ * @version 1.0
+ * @date 13/11/16
  */
 public class RechnerTest {
 
