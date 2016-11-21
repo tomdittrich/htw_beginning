@@ -4,10 +4,12 @@
  * Basis fuer weitere Methoden.
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 1.0
+ * @version 1.1
  * @date 20.11.16
  */
 package math;
+
+import java.util.Arrays;
 
 public class Matrix {
 
@@ -74,7 +76,7 @@ public class Matrix {
         // prüft ob Array leer oder ungültig (siehe Methoden)
         // andernfalls Exception Wurf
         if (istLeer(array) || !istGueltig(array)) {
-            throw new IllegalArgumentException("Leere oder ungültge Matrix");
+            System.out.println("Leere oder ungültge Matrix");
         } else {
             this.array = array;
             this.zeilen = array.length;
@@ -160,7 +162,7 @@ public class Matrix {
             }
         } else {
             // Exception, wenn Matrizen unterschiedliche Dimensionen haben
-            throw new IllegalArgumentException("Matrizen Dimensionen nicht kompatibel");
+            System.out.println("Matrizen Dimensionen nicht kompatibel");
         }
         return new Matrix(ergebnis);
     }
@@ -195,7 +197,7 @@ public class Matrix {
 
         // Exception, wenn Matrizen inkompatible Dimensionen haben
         if (getSpalten() != ma.getZeilen()) {
-            throw new IllegalArgumentException("Falsche Dimensionen, Matrizen können nicht multipliziert werden.");
+            System.out.println("Falsche Dimensionen, keine Multiplikation möglich.");
         } else {
             for (int i = 0; i < ergebnis.length; i++) {
                 for (int j = 0; j < ergebnis[0].length; j++) {
@@ -207,5 +209,20 @@ public class Matrix {
         }
 
         return new Matrix(ergebnis);
+    }
+
+    /**
+     * Gibt die Matrix als String aus
+     *
+     * @return Matrix als String
+     */
+    public String toString() {
+        String ergebnis = "";
+
+        for (double[] n : array) {
+            ergebnis += Arrays.toString(n) + "\n";
+        }
+
+        return ergebnis;
     }
 }
