@@ -1,11 +1,12 @@
 package math;
 
 /**
- * Description
+ * Mit QuadraticMatrix koennen quadratische double Matrizen erstellt werden.
+ * Weiterhin kann die Matrix mit sich selber um ein n-faches multipliziert werden.
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.3
- * @date 11/21/16
+ * @version 0.7
+ * @date 23.11.16
  */
 public class QuadraticMatrix extends Matrix {
 
@@ -27,10 +28,18 @@ public class QuadraticMatrix extends Matrix {
      * @param array Array Übergabe
      */
     public QuadraticMatrix(double[][] array) {
-        super(array);
+        if (quadraticCheck(array)) {
+            neueMatrix(array);
+        } else {
+            System.out.println("Keine quadratische Matrix.");
+        }
+    }
 
-        if (!quadraticCheck(array)) {
-            throw new IllegalArgumentException("Matrix nicht quadratisch.");
+    public void neueQuadraticMatrix(double[][]array){
+        if (quadraticCheck(array)) {
+            neueMatrix(array);
+        } else {
+            System.out.println("Keine quadratische Matrix.");
         }
     }
 
@@ -38,14 +47,16 @@ public class QuadraticMatrix extends Matrix {
         Matrix ergebnis = new Matrix(getArray());
 
         if (n == 0) {
-            System.out.println("Einheit");
-            return ergebnis;
+            ergebnis = new IdentityMatrix(ergebnis.getSpalten());
+
+        } else if(n<0) {
+            System.out.println("Keine negative Potenz möglich.");
         } else {
             for (int i = 1; i < n; i++) {
                 ergebnis = ergebnis.multiply(this);
             }
-            return ergebnis;
         }
+        return ergebnis;
     }
 
     private boolean quadraticCheck(double[][] array) {
