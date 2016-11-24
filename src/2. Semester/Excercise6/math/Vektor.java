@@ -1,13 +1,14 @@
+package math;
+
 /**
  * Mit Vektor koennen double Vektoren erstellt werden.
  * Einfache Anwendungen wie das Addieren, Multiplizieren mit einem Skalar oder einem anderen Vektor sind möglich.
  * Basis fuer weitere Methoden.
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.3
- * @date 20.11.16
+ * @version 1.0
+ * @date 24.11.16
  */
-package math;
 
 public class Vektor extends Matrix {
 
@@ -15,8 +16,8 @@ public class Vektor extends Matrix {
      * Default Konstruktur
      * Erzeugt einen Vektor mit den Werten 1,2 und 3
      */
-    public Vektor(){
-        super(new double[][]{new double[]{1,2,3}});
+    public Vektor() {
+        super(new double[][]{new double[]{1, 2, 3}});
     }
 
     /**
@@ -25,7 +26,7 @@ public class Vektor extends Matrix {
      *
      * @param feld Array Übergabe
      */
-    public Vektor(double[] feld){
+    public Vektor(double[] feld) {
         super(new double[][]{feld});
     }
 
@@ -34,11 +35,9 @@ public class Vektor extends Matrix {
      *
      * @return die Länge
      */
-    public double length()
-    {
+    public double length() {
         double sum = 0;
-        for(double n : getArray()[0])
-        {
+        for (double n : getArray()[0]) {
             sum += n * n;
         }
         return Math.sqrt(sum);
@@ -49,11 +48,8 @@ public class Vektor extends Matrix {
      *
      * @return Vektor als String
      */
-    public String toString(){
-        return ("Der Vektor lautet:\n"+super.toString());
+    public String toString() {
+        return (super.toString());
     }
-
-
-
 
 }

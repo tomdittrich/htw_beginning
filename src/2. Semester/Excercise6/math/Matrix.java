@@ -1,3 +1,7 @@
+package math;
+
+import java.util.Arrays;
+
 /**
  * Mit Matrix koennen double Matrizen erstellt werden.
  * Einfache Anwendungen wie das Addieren, Multiplizieren mit einem Skalar oder einer anderen Matrix sind möglich
@@ -7,9 +11,7 @@
  * @version 1.1
  * @date 20.11.16
  */
-package math;
 
-import java.util.Arrays;
 
 public class Matrix {
 
@@ -107,7 +109,7 @@ public class Matrix {
     private boolean istGueltig(double[][] array) {
         boolean ergebnis = false;
 
-        if(array.length == 1){
+        if (array.length == 1) {
             ergebnis = true;
         }
 
