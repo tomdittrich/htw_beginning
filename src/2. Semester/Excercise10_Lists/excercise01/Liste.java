@@ -66,7 +66,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int get(int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("Index out of bounds.");
+            throw new NullPointerException("get(): Index out of bounds.");
         }
 
         Node temp = begin;
@@ -80,7 +80,7 @@ public class Liste implements AbstrakteListe {
             temp = temp.next;
         }
 
-        throw new NullPointerException("Index out of bounds.");
+        throw new NullPointerException("get(): Index out of bounds.");
     }
 
     /**
@@ -95,7 +95,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int set(int wert, int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("Index out of bounds.");
+            throw new NullPointerException("set(): Index out of bounds.");
         }
 
         Node temp = begin;
@@ -109,7 +109,7 @@ public class Liste implements AbstrakteListe {
             }
             temp = temp.next;
         }
-        throw new NullPointerException("Index out of bounds.");
+        throw new NullPointerException("set(): Index out of bounds.");
     }
 
     /**
@@ -204,17 +204,18 @@ public class Liste implements AbstrakteListe {
         Node temp = begin;
 
         // to do : wenn Wert an erster Stelle > removeFirst
-        while(temp.next!=null){
+        while (temp.next != null) {
             Node temp2 = temp.next;
 
-            if(temp2.data == wert)
-            {
-                if(temp2.next!=null){
+            if (temp2.data == wert) {
+                if (temp2.next != null) {
                     temp.next = temp2.next;
-                    ergebnis=true;
+                    ergebnis = true;
+                    length--;
                 } else {
                     // wenn Wert im letzten Glied gefunden wird, muss der Next vom Vorgänger auf 0 zeigen
                     temp.next = null;
+                    length--;
                     return true;
                 }
             }
@@ -231,7 +232,14 @@ public class Liste implements AbstrakteListe {
      */
     @Override
     public int removeFirst() throws NullPointerException {
-        return 0;
+        if (begin == null) {
+            throw new NullPointerException("removeFirst(): Liste leer.");
+        } else {
+            int ergebnis = begin.data;
+            begin = begin.next;
+            length--;
+            return ergebnis;
+        }
     }
 
     /**
@@ -242,7 +250,30 @@ public class Liste implements AbstrakteListe {
      */
     @Override
     public int removeLast() throws NullPointerException {
-        return 0;
+        int ergebnis;
+
+        // wenn Liste leer
+        if (begin == null) {
+            throw new NullPointerException("removeLast(): Liste leer.");
+
+        } else if (begin.next == null) { // wenn nur ein Node vorhanden
+            ergebnis = begin.data;
+            begin = begin.next;
+            length--;
+            return ergebnis;
+
+        } else { // wenn mehrere Nodes vorhanden
+            Node temp = begin;
+            Node temp2 = temp.next;
+
+            while (temp2.next != null) {
+                temp = temp2;
+                temp2 = temp2.next;
+            }
+            ergebnis = temp2.data;
+            temp.next = null; // Alternative: temp2 = null
+            return ergebnis;
+        }
     }
 
     /**
