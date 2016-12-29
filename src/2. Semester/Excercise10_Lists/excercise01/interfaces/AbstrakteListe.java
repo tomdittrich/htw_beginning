@@ -1,5 +1,13 @@
 package excercise01.interfaces;
 
+/**
+ * Interfaces fuer Listen mit entsprechenden Methoden
+ *
+ * @author Tom Dittrich s0555944@htw-berlin.de
+ * @version 1.0
+ * @date 29.12.16
+ */
+
 public interface AbstrakteListe {
 	
 	/**

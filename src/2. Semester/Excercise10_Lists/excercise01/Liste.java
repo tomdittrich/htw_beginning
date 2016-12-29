@@ -3,8 +3,13 @@ package excercise01;
 import excercise01.interfaces.AbstrakteListe;
 
 /**
- * Created by Tom on 26.12.2016.
+ * Klasse zum Erstellen und Verwalten von Single-Linked-Lists
+ *
+ * @author Tom Dittrich s0555944@htw-berlin.de
+ * @version 0.7
+ * @date 29.12.16
  */
+
 public class Liste implements AbstrakteListe {
 
     private Node begin;
@@ -272,6 +277,7 @@ public class Liste implements AbstrakteListe {
             }
             ergebnis = temp2.data;
             temp.next = null; // Alternative: temp2 = null
+            length--;
             return ergebnis;
         }
     }
