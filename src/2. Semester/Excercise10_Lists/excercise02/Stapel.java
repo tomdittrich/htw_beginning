@@ -13,12 +13,21 @@ import excercise02.interfaces.StapelSchnittstelle;
 
 public class Stapel extends Liste implements StapelSchnittstelle {
 
+    /**
+     * Default Konstruktor
+     */
     public Stapel(){
         super();
     }
 
-    public Stapel(int wert){
-        super(wert);
+    /**
+     * /**
+     * Konstruktor, ein Element wird angelegt
+     *
+     * @param a Inhalt des Elements
+     */
+    public Stapel(int a){
+        super(a);
     }
 
     /**
