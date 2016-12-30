@@ -5,7 +5,7 @@ package excercise02.interfaces;
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.0
- * @date 29.12.16
+ * @date 30.12.16
  */
 
 public interface StapelSchnittstelle {
@@ -22,7 +22,7 @@ public interface StapelSchnittstelle {
      *
      * @return Wert des Elements
      */
-    public abstract int pop();
+    public abstract int pop() throws NullPointerException;
 
     /**
      *
@@ -30,7 +30,7 @@ public interface StapelSchnittstelle {
      *
      * @return Wert oberstes Element
      */
-    public abstract int top();
+    public abstract int top() throws NullPointerException;
 
     /**
      * Prüft ob Stack leer ist

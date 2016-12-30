@@ -89,7 +89,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int get(int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("get(): Index out of bounds: "+index);
+            throw new NullPointerException("get(): Index out of bounds: " + index);
         }
 
         Node temp = begin;
@@ -103,7 +103,7 @@ public class Liste implements AbstrakteListe {
             temp = temp.next;
         }
 
-        throw new NullPointerException("get(): Index out of bounds: "+index);
+        throw new NullPointerException("get(): Index out of bounds: " + index);
     }
 
     /**
@@ -118,7 +118,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int set(int wert, int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("set(): Index out of bounds: "+index);
+            throw new NullPointerException("set(): Index out of bounds: " + index);
         }
 
         Node temp = begin;
@@ -132,7 +132,7 @@ public class Liste implements AbstrakteListe {
             }
             temp = temp.next;
         }
-        throw new NullPointerException("set(): Index out of bounds: "+index);
+        throw new NullPointerException("set(): Index out of bounds: " + index);
     }
 
     /**
@@ -228,7 +228,7 @@ public class Liste implements AbstrakteListe {
         // wenn erstes Element Wert enthaelt, fuehre removeFirst Methode aus
         // temp != null noetig, da er sonst bei Listen die nur aus
         // Elementen mit diesem einen Wert bestehen in eine Exception laeuft
-        while (begin != null && begin.data==wert){
+        while (begin != null && begin.data == wert) {
             removeFirst();
             ergebnis = true;
             // muss jetzt noch weiter laufen, falls Wert noch in einem anderen Element gefunden wird
@@ -331,17 +331,17 @@ public class Liste implements AbstrakteListe {
         }
 
         if (index < 0 || length <= index) {
-            throw new NullPointerException("removeAtIndex(): Index out of bounds: "+index);
+            throw new NullPointerException("removeAtIndex(): Index out of bounds: " + index);
         }
 
         // wenn Index = 0, wird es direkt entfernt
         if (index == 0) {
             return removeFirst();
 
-        } else if (index == length-1) { // wenn Index ganz hinten, wird es direkt entfernt
+        } else if (index == length - 1) { // wenn Index ganz hinten, wird es direkt entfernt
             return removeLast();
 
-        } else {
+        } else { // ansonsten suche Index
             Node temp = begin;
 
             for (int i = 0; temp != null; i++) {
@@ -357,7 +357,7 @@ public class Liste implements AbstrakteListe {
                 temp = temp.next;
             }
         }
-        throw new NullPointerException("removeAtIndex(): Index out of bounds: "+index);
+        throw new NullPointerException("removeAtIndex(): Index out of bounds: " + index);
     }
 
     /**
@@ -366,14 +366,14 @@ public class Liste implements AbstrakteListe {
      * @return Inhalt der Liste
      */
     @Override
-    public String toString(){
+    public String toString() {
 
-        if(length!=0){
+        if (length != 0) {
             String ergebnis = "[ ";
             Node temp = begin;
 
-            while(temp!=null){
-                ergebnis+=temp.data+" ";
+            while (temp != null) {
+                ergebnis += temp.data + " ";
                 temp = temp.next;
             }
 
