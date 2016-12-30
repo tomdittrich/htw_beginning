@@ -6,7 +6,7 @@ import excercise01.interfaces.AbstrakteListe;
  * Klasse zum Erstellen und Verwalten von Single-Linked-Lists
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.7
+ * @version 0.9
  * @date 29.12.16
  */
 
@@ -21,20 +21,38 @@ public class Liste implements AbstrakteListe {
      * @return Laenge der Liste
      */
 
+    /**
+     * Default Konstruktor
+     */
     public Liste() {
         begin = null;
     }
 
+    /**
+     * Konstruktor, ein Element wird angelegt
+     *
+     * @param a Inhalt des Elements
+     */
     public Liste(int a) {
         begin = new Node(a);
         length++;
     }
 
+    /**
+     * Konstruktor, ein Element wird angelegt
+     *
+     * @param a zu übergebender Node
+     */
     public Liste(Node a) {
         begin = a;
         length++;
     }
 
+    /**
+     * berechnet die Laenge der Liste
+     *
+     * @return Laenge der Liste
+     */
     @Override
     public int size() {
         return length;
@@ -71,7 +89,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int get(int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("get(): Index out of bounds.");
+            throw new NullPointerException("get(): Index out of bounds: "+index);
         }
 
         Node temp = begin;
@@ -85,7 +103,7 @@ public class Liste implements AbstrakteListe {
             temp = temp.next;
         }
 
-        throw new NullPointerException("get(): Index out of bounds.");
+        throw new NullPointerException("get(): Index out of bounds: "+index);
     }
 
     /**
@@ -100,7 +118,7 @@ public class Liste implements AbstrakteListe {
     @Override
     public int set(int wert, int index) throws NullPointerException {
         if (index < 0 || length <= index) {
-            throw new NullPointerException("set(): Index out of bounds.");
+            throw new NullPointerException("set(): Index out of bounds: "+index);
         }
 
         Node temp = begin;
@@ -114,7 +132,7 @@ public class Liste implements AbstrakteListe {
             }
             temp = temp.next;
         }
-        throw new NullPointerException("set(): Index out of bounds.");
+        throw new NullPointerException("set(): Index out of bounds: "+index);
     }
 
     /**
@@ -167,8 +185,6 @@ public class Liste implements AbstrakteListe {
             return false;
         }
 
-        Node temp = begin;
-
         // wenn Index = 0, wird es direkt vorn angefügt
         if (index == 0) {
             addFirst(wert);
@@ -179,6 +195,8 @@ public class Liste implements AbstrakteListe {
             return true;
 
         } else {
+            Node temp = begin;
+
             for (int i = 0; temp != null; i++) {
 
                 if (i == index - 1) {
@@ -206,17 +224,31 @@ public class Liste implements AbstrakteListe {
     @Override
     public boolean remove(int wert) {
         boolean ergebnis = false;
-        Node temp = begin;
 
-        // to do : wenn Wert an erster Stelle > removeFirst
-        while (temp.next != null) {
-            Node temp2 = temp.next;
+        // wenn erstes Element Wert enthaelt, fuehre removeFirst Methode aus
+        // temp != null noetig, da er sonst bei Listen die nur aus
+        // Elementen mit diesem einen Wert bestehen in eine Exception laeuft
+        while (begin != null && begin.data==wert){
+            removeFirst();
+            ergebnis = true;
+            // muss jetzt noch weiter laufen, falls Wert noch in einem anderen Element gefunden wird
+        }
+
+        Node temp = begin;
+        Node temp2;
+
+        // temp != null noetig, da er sonst bei Listen die nur aus
+        // Elementen mit diesem einen Wert bestehen in eine Exception laeuft
+        while (temp != null && temp.next != null) {
+            temp2 = temp.next;
 
             if (temp2.data == wert) {
                 if (temp2.next != null) {
                     temp.next = temp2.next;
+                    temp2 = temp.next;
                     ergebnis = true;
                     length--;
+                    continue;
                 } else {
                     // wenn Wert im letzten Glied gefunden wird, muss der Next vom Vorgänger auf 0 zeigen
                     temp.next = null;
@@ -225,6 +257,7 @@ public class Liste implements AbstrakteListe {
                 }
             }
             temp = temp.next;
+
         }
         return ergebnis;
     }
@@ -291,6 +324,63 @@ public class Liste implements AbstrakteListe {
      */
     @Override
     public int removeAtIndex(int index) throws NullPointerException {
-        return 0;
+
+        // wenn Liste leer
+        if (begin == null) {
+            throw new NullPointerException("removeAtIndex(): Liste leer.");
+        }
+
+        if (index < 0 || length <= index) {
+            throw new NullPointerException("removeAtIndex(): Index out of bounds: "+index);
+        }
+
+        // wenn Index = 0, wird es direkt entfernt
+        if (index == 0) {
+            return removeFirst();
+
+        } else if (index == length-1) { // wenn Index ganz hinten, wird es direkt entfernt
+            return removeLast();
+
+        } else {
+            Node temp = begin;
+
+            for (int i = 0; temp != null; i++) {
+
+                if (i == index - 1) {
+                    Node temp2 = temp.next;
+                    int ergebnis = temp2.data;
+                    temp.next = temp2.next;
+                    temp2.next = null; // eigentlich obsoloet, aber sicher ist sicher
+                    length--;
+                    return ergebnis;
+                }
+                temp = temp.next;
+            }
+        }
+        throw new NullPointerException("removeAtIndex(): Index out of bounds: "+index);
+    }
+
+    /**
+     * Liste wird ausgegeben
+     *
+     * @return Inhalt der Liste
+     */
+    @Override
+    public String toString(){
+
+        if(length!=0){
+            String ergebnis = "[ ";
+            Node temp = begin;
+
+            while(temp!=null){
+                ergebnis+=temp.data+" ";
+                temp = temp.next;
+            }
+
+            ergebnis += "]";
+            return ergebnis;
+
+        }
+        return "[ Liste leer ]";
     }
 }
