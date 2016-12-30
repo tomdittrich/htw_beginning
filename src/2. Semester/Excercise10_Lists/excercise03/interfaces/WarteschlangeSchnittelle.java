@@ -5,7 +5,7 @@ package excercise03.interfaces;
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.0
- * @date 29.12.16
+ * @date 30.12.16
  */
 
 public interface WarteschlangeSchnittelle {
@@ -22,14 +22,14 @@ public interface WarteschlangeSchnittelle {
      *
      * @return Wert des Elements
      */
-    public abstract int dequeue();
+    public abstract int dequeue() throws NullPointerException;
 
     /**
      * Liefert den ersten Wert der Warteschlange zurueck
      *
      * @return Wert des ersten Elements
      */
-    public abstract int first();
+    public abstract int first() throws NullPointerException;
 
     /**
      * Prüft ob Warteschlange leer ist
