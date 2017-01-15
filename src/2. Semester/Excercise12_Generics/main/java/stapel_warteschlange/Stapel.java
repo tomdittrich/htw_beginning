@@ -8,6 +8,8 @@ import stapel_warteschlange.list.Liste;
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.1
  * @date 15.01.17
+ *
+ * @param <T> Typ der zu speichernden Daten
  */
 
 public class Stapel<T> extends Liste<T> implements StapelSchnittstelle<T> {

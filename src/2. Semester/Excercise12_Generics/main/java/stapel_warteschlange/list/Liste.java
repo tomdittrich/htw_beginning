@@ -6,6 +6,8 @@ package stapel_warteschlange.list;
  * @author Tom Dittrich s0555944@htw-berlin.de
  * @version 1.1
  * @date 15.01.17
+ *
+ * @param <T> Typ der zu speichernden Daten
  */
 
 public class Liste<T> implements AbstrakteListe<T> {

@@ -6,8 +6,10 @@ import stapel_warteschlange.list.Liste;
  * Klasse zum Erstellen und Verwalten von generischen Queues/Warteschlangen
  *
  * @author Tom Dittrich s0555944@htw-berlin.de
- * @version 0.9
- * @date 30.12.16
+ * @version 1.1
+ * @date 15.01.17
+ *
+ * @param <T> Typ der zu speichernden Daten
  */
 
 public class Warteschlange<T> extends Liste<T> implements WarteschlangeSchnittelle<T> {
