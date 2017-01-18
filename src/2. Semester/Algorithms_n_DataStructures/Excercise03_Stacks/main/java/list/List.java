@@ -202,7 +202,7 @@ public class List<T> implements Listable<T> {
     }
 
     /**
-     * entfernt alle Elemente mit gegebenem Wert aus der List
+     * entfernt alle Elemente mit gegebenem Wert aus der Liste
      *
      * @param wert zu entfernende Wert
      * @return true, wenn Element mit gegebenem Wert gefunden und aus der List entfernt wurde
